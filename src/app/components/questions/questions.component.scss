@@ -1,0 +1,41 @@
+.questionsResultPage{
+    margin: auto;
+    text-align: center;
+    width: 65%;
+    padding: 3% 2%;
+}
+.question-options{
+    margin-bottom: 15px;
+}
+.questions-list{
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+.option-list{
+    text-align: left;
+}
+.option-button{
+    background-color: transparent;
+    color: green;
+    border-color: green;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    padding: 3px 6px;
+    font-size: 14px;
+    
+}
+.option-button:hover{
+    background-color: green;
+    color: #ffffff;
+}
+.selected-option{
+    background-color: #008000;
+    color: #ffffff;
+}
+.submit-btn, .create-quiz-btn{
+    background-color: #3a3e42;
+    color: #ffffff;
+    border-color: #3a3e42;
+    width: 50%;
+}

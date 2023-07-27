@@ -1,0 +1,32 @@
+.createNewQuizpage {
+    margin: auto;
+    width: 65%;
+    padding: 15px;
+    text-align: center;
+}
+h4{
+    margin-bottom: 20px;
+}
+.create-quiz-btn{
+    background-color: #3a3e42;
+    color: #ffffff;
+    border-color: #3a3e42; 
+    font-size: 14px;
+}
+
+.create-quiz-btn:hover, .create-quiz-btn:focus{
+    background-color: #3a3e42;
+    border-color: #3a3e42; 
+}
+.create-quiz-btn:active{
+    background-color: #3a3e42;
+    color: #ffffff;
+    border-color: #3a3e42;
+}
+.form-group{
+    padding: 0px !important;
+}
+.form-control{
+    border-color: #adb5bd;
+    font-size: 14px;
+}

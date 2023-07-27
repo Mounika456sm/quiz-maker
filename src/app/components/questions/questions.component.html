@@ -1,0 +1,72 @@
+<div class="questionsResultPage">
+    <ng-container *ngIf="results.length > 0; else noData;">
+        <div class="question-options" *ngFor="let question of results;let questionIndex = index">
+            <div class="questions-list">
+                <label>{{question.question}}</label>
+            </div>
+
+            <div class="option-list">
+                <button class="btn option-button"
+                    *ngFor="let option of question?.incorrect_answers; let answerIndex = index"
+                    (click)="selectAnswer(questionIndex, answerIndex, option)"
+                    [ngClass]="{'selected-option':question?.answeredIndex === answerIndex}">
+                    {{option}}
+                </button>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <button *ngIf="showSubmitButton" (click)="submitQuiz()" class="btn submit-btn">Submit</button>
+        </div>       
+
+    </ng-container>
+
+    <ng-template #noData>
+        <div class="text-center"> </div> No Data Found.
+    </ng-template>
+</div>
+
+
+
+<!-- <div class="questionsResultPage">
+    <ng-container *ngIf="results.length > 0; else noData;">
+        <div class="question-options" *ngFor="let question of results;let questionIndex = index">
+            <div class="questions-list">
+                <label>{{question.question}}</label>
+            </div>
+
+            <div *ngIf="!showResults" class="option-list">
+                <button class="btn option-button"
+                    *ngFor="let option of question?.incorrect_answers; let answerIndex = index"
+                    (click)="selectAnswer(questionIndex, answerIndex, option)"
+                    [ngClass]="{'selected-option':question?.answeredIndex === answerIndex}">
+                    {{option}}
+                </button>
+            </div>
+
+            <div *ngIf="showResults" class="option-list">
+                <button *ngFor="let option of question?.incorrect_answers;let i = index" class="btn option-button"
+                    [ngClass]="{'correct-answer':option == question.correct_answer, 'incorrect-answer':option == question.selectedAnswer}">
+                    {{option}}</button>
+
+            </div>
+        </div>
+
+        <div *ngIf="!showResults" class="form-group text-center">
+            <button *ngIf="showSubmitButton" (click)="submitQuiz()" class="btn submit-btn">Submit</button>
+        </div>
+
+        <div *ngIf="showResults" class="score-section">
+            <div class="score" [ngStyle]="{'background-color': color}">
+                <span>You scored {{correctAnswerCount}} out of {{totalQuestions}} </span>
+            </div>
+            <div class="create-new-quiz-btn">
+                <button class="btn create-quiz-btn" (click)="navigateToCreateQuiz()"> Create a new quiz</button>
+            </div>
+        </div>
+
+    </ng-container>
+
+    <ng-template #noData>
+        <div class="text-center"> </div> No Data Found.
+    </ng-template>
+</div> -->

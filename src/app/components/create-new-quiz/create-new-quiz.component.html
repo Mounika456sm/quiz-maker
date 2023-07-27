@@ -1,0 +1,38 @@
+<div class="createNewQuizpage">
+  <h4>QUIZ MAKER</h4>
+
+  <form [formGroup]="CreateQuizForm">
+    <div class="row">
+      <div class="form-group col-md-5">
+        <select formControlName="category" id="categorySelect" class="form-control"
+          placeholder="Select a category">
+          <option value="">Select a category</option>
+          <option [value]="category?.id" *ngFor="let category of categoryList?.trivia_categories;let i=index">
+            {{category?.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-5">
+        <select formControlName="difficulty" id="difficultySelect" class="form-control"
+          placeholder="Select difficulty">
+          <option [value]="difficulty.level" *ngFor="let difficulty of difficultyLevels">{{difficulty.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-1">
+        <button class="btn create-quiz-btn" id="createBtn" (click)="createQuiz()">Create</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<div *ngIf="questionResult?.results" class="question-list">
+  <app-questions [results]="questionResult.results"></app-questions>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.5)"
+  template="<img src='../../../assets/images/loader.gif' />"
+>
+</ngx-spinner>
