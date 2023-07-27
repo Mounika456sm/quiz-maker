@@ -6,6 +6,7 @@ import { questionAnswers} from '../../models/questions';
 import { QuizMakerConstants } from '../../constants/quiz-maker.constant';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
+import { decode } from 'html-entities';
 
 @Component({
   selector: 'app-create-new-quiz',
@@ -46,14 +47,33 @@ export class CreateNewQuizComponent implements OnInit,OnDestroy{
   createQuiz(): void{
     const category: string = this.CreateQuizForm.value.category as string;
     const difficulty : string= this.CreateQuizForm.value.difficulty as string;
-    this.spinner.show();
     if (category !== '' && difficulty !== '') {
+    this.spinner.show();
       //to get list of questions based on category, difficulty level
     this.subscription = this.quizService.getQuestionsList(this.amount, category,difficulty, this.type)
     .subscribe((res:questionAnswers) => {
       this.questionResult = res;
+
+      for (let option of this.questionResult.results){
+        option.question = decode(option.question);
+        option.correct_answer = decode(option.correct_answer);
+        option.selectedAnswer = '';
+  
+        //generate random index
+        let insertrandomIndex = Math.floor(Math.random() * 4);
+  
+        //insert correct answer into array 
+        option.incorrect_answers.splice(insertrandomIndex, 0, option.correct_answer)
+        
+        for (const [key, value] of option.incorrect_answers.entries()) {
+          option.incorrect_answers[key] = decode(value);
+        }
+  
+      }
+
       this.spinner.hide();
     })
+
   }
   }
 

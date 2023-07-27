@@ -28,19 +28,12 @@ export class QuizResultComponent {
       if (answer.correct_answer === answer.selectedAnswer)
         this.correctAnswerCount = this.correctAnswerCount + 1;
     }
-
-    if(this.correctAnswerCount >=0 && this.correctAnswerCount <=1){
-      this.color = 'red';
-    }
-    else if(this.correctAnswerCount >=2 && this.correctAnswerCount <=3){
-      this.color = 'yellow';
-    }
-    else if(this.correctAnswerCount >=4 && this.correctAnswerCount <=5 ){
-      this.color = 'green';
-    }
   }
 
   navigateToCreateQuiz(){
+    this.quizService.showResults(false);
     this.router.navigate(['/','create-quiz'])
   }
 }
+
+

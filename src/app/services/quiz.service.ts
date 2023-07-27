@@ -11,7 +11,8 @@ import {QuizMakerConstants} from '../constants/quiz-maker.constant';
 export class QuizService {
   private baseUrl: string = QuizMakerConstants.APIURL;
   quizResult: questionsList[];
-
+  showresults : boolean = false;
+  
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<MainCategory<Category[]>>{
@@ -32,6 +33,14 @@ export class QuizService {
     return this.quizResult;
   }
 
+  
+  showResults(showResults :boolean){
+    this.showresults = showResults;
+  }
+
+  getResults()  {
+    return this.showresults;
+  }
 }
 
 

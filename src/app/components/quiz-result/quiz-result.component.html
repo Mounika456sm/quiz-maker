@@ -1,19 +1,14 @@
-
 <div class="quizResultPage">
     <h4> RESULTS </h4>
-    <div class="question-options" *ngFor="let question of quizResult; let i=index">
-        <div class="questions-list">
-            <label>{{question.question}}</label>
-            <div class="option-list">
-                   <button class="btn option-button" *ngFor = "let res of question?.incorrect_answers;let i = index"
-                   [ngClass]="{'correct-answer':res == question.correct_answer, 'incorrect-answer':res == question.selectedAnswer}"> 
-                   {{res}}</button>
-            </div>
-        </div>
+
+    <div *ngIf="quizResult" class="question-list">
+        <app-questions [results]="quizResult"></app-questions>
     </div>
 
-    <div class="score-section" >
-        <div class="score" [ngStyle]="{'background-color': color}">
+    <div class="score-section">
+        <div class="score" [ngClass]="{'bg-red':correctAnswerCount <=1,
+        'bg-yellow':correctAnswerCount > 1 && correctAnswerCount <=3,
+        'bg-green':correctAnswerCount > 3 && correctAnswerCount <=5}">
             <span>You scored {{correctAnswerCount}} out of {{totalQuestions}} </span>
         </div>
         <div class="create-new-quiz">

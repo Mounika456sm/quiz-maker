@@ -1,4 +1,4 @@
-<div class="questionsResultPage">
+<!-- <div class="questionsResultPage">
     <ng-container *ngIf="results.length > 0; else noData;">
         <div class="question-options" *ngFor="let question of results;let questionIndex = index">
             <div class="questions-list">
@@ -23,11 +23,11 @@
     <ng-template #noData>
         <div class="text-center"> </div> No Data Found.
     </ng-template>
-</div>
+</div> -->
 
 
 
-<!-- <div class="questionsResultPage">
+<div class="questionsResultPage">
     <ng-container *ngIf="results.length > 0; else noData;">
         <div class="question-options" *ngFor="let question of results;let questionIndex = index">
             <div class="questions-list">
@@ -54,19 +54,9 @@
         <div *ngIf="!showResults" class="form-group text-center">
             <button *ngIf="showSubmitButton" (click)="submitQuiz()" class="btn submit-btn">Submit</button>
         </div>
-
-        <div *ngIf="showResults" class="score-section">
-            <div class="score" [ngStyle]="{'background-color': color}">
-                <span>You scored {{correctAnswerCount}} out of {{totalQuestions}} </span>
-            </div>
-            <div class="create-new-quiz-btn">
-                <button class="btn create-quiz-btn" (click)="navigateToCreateQuiz()"> Create a new quiz</button>
-            </div>
-        </div>
-
     </ng-container>
 
     <ng-template #noData>
         <div class="text-center"> </div> No Data Found.
     </ng-template>
-</div> -->
+</div>
